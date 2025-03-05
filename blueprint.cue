@@ -10,8 +10,7 @@ global: {
 		providers: {
 			aws: {
 				region: "eu-central-1"
-				ecr: registry: "332405224602.dkr.ecr.eu-central-1.amazonaws.com"
-				role: "arn:aws:iam::332405224602:role/ci"
+				role:   "arn:aws:iam::332405224602:role/ci"
 			}
 
 			docker: credentials: {
@@ -32,7 +31,7 @@ global: {
 			kcl: {
 				install: true
 				registries: [
-					aws.ecr.registry,
+					"ghcr.io/input-output-hk/catalyst-kcl",
 				]
 				version: "v0.11.0"
 			}
