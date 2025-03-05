@@ -1,0 +1,6 @@
+VERSION 0.8
+
+INSTALL:
+    FUNCTION
+
+    RUN wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash

@@ -28,6 +28,10 @@ global: {
 				version:   "0.8.15"
 			}
 
+			github: {
+				registry: "ghcr.io"
+			}
+
 			kcl: {
 				install: true
 				registries: [
