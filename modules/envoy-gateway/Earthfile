@@ -1,6 +1,6 @@
 VERSION 0.8
 
-IMPORT ../../../earthly/kcl AS kcl
+IMPORT ../earthly/kcl AS kcl
 
 deps:
     FROM debian:bookworm-slim
