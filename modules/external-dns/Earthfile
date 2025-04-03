@@ -1,0 +1,35 @@
+VERSION 0.8
+
+IMPORT ../../earthly/kcl AS kcl
+
+deps:
+    FROM debian:bookworm-slim
+
+    RUN apt-get update && apt-get install -y curl wget
+
+    DO kcl+INSTALL
+
+src:
+    FROM +deps
+
+    WORKDIR /work
+
+    COPY --dir crd v1alpha1 .
+    COPY kcl.mod kcl.mod.lock README.md .
+
+generate:
+    FROM +src
+
+    RUN kcl import -m crd -o . -s crd/crd.yaml
+    RUN kcl doc generate
+
+    SAVE ARTIFACT models/v1alpha1 AS LOCAL v1alpha1
+    SAVE ARTIFACT docs/external-dns.md AS LOCAL README.md
+
+check:
+    FROM +generate
+
+    WORKDIR /work
+
+    RUN diff -r models/v1alpha1 v1alpha1
+    RUN diff -r docs/external-dns.md README.md
