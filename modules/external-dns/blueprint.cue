@@ -1,6 +1,6 @@
 version: "1.0"
 project: {
-	name: "envoy-gateway"
+	name: "external-dns"
 	release: {
 		kcl: {
 			on: tag: {}
